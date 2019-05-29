@@ -1,228 +1,1211 @@
 @import "variables";
 
 @media (max-width: 599px) {
-    /*.phone-only */
-  .container{
-    padding-left: 15px!important;
-    padding-right: 15px!important;
+
+
+  .sm-container{
+    padding-left: 35px;
+    padding-right: 35px;
     max-width: 1250px;
     margin: auto;
   }
-  /*Padding All*/
-  @each $element, $size in $phone_only_sizes {
-    .padding-#{$element} {
-      padding: $size;
-    }
-  }
 
-  /*PADDING SIDES*/
 
-  @each $side in $sides{
-    @each $element, $size in $phone_only_sizes{
-      .padding-#{$side}-#{$element} {
-        padding-#{$side}: $size!important;
-      }
-    }
-  }
-
-  /*MARGIN All*/
-
-  @each $element, $size in $phone_only_sizes {
-    .margin-#{$element} {
-      margin: $size;
-    }
-  }
-
-  /*MARGIN SIDES*/
-
-  @each $side in $sides{
-    @each $element, $size in $phone_only_sizes {
-      .margin-#{$side}-#{$element} {
-        margin-#{$side}: $size;
-      }
-    }
-  }
-
-  /*::text-size txt-size-* */
-
-  @each $element, $size in $phone_only_sizes {
-    .txt-size-#{$element} {
+  @each $element, $size in $sizes {
+    .sm-txt-size-#{$element} {
       font-size: $size!important;
     }
   }
 
-  @each $element, $template in $phone_only_grids {
-    .grid-#{$element} {
+  .sm-txt-center{
+    text-align: center;
+  }
+
+
+
+  /*::margin:: margin-*-*/
+
+  /*All*/
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .sm-m-#{$alias}-#{$element} {
+        @if $side == "all" {
+          margin: $size;
+        } @else {
+          margin-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+  /*::Padding:: p-*-*/
+
+  /*Padding All*/
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .sm-p-#{$alias}-#{$element} {
+        @if $side == "all" {
+          padding: $size;
+        } @else {
+          padding-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+
+  /*::width*/
+
+  .sm-full-width{
+    width: 100%;
+  }
+
+  /*Align*/
+
+  .sm-center{
+    display: flex;
+    justify-content: center;
+  }
+
+  /*::Color */
+
+
+
+  /*::text color:: txt-c-* */
+  @each $element, $color in $colors {
+    .sm-txt-c-#{$element} {
+      color: $color;
+    }
+  }
+
+  /*::background:: bg-c-* */
+
+  @each $element, $color in $colors {
+    .sm-bg-c-#{$element} {
+      background-color: $color;
+    }
+  }
+
+  /*::border size:: border-s-* */
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .sm-bd-w-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-width: $size;
+        } @else {
+          border-#{$side}-width: $size;
+        }
+      }
+    }
+  }
+
+  //*border color*/
+
+  @each $element, $color in $colors {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .sm-bd-c-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-color: $color;
+        } @else {
+          border-#{$side}-color: $color;
+        }
+      }
+    }
+  }
+
+
+
+  /*Border-radius*/
+
+  //ALL
+  @each $element, $size in $sizes{
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      @each $s_side in $sides{
+        $s_alias: map_get($side_aliases,$s_side);
+
+        @if ($s_side != "all" and $s_side != $side) {
+          .sm-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+            @if $side == "all" {
+              border-radius: $size;
+            } @else {
+              border-#{$s_side}-#{$side}-radius: $size;
+            }
+          }
+        }
+
+      }
+    }
+  }
+  /*::Layout */
+
+  /*::grid */
+
+  .sm-grid{
+    display: grid;
+  }
+
+  @each $element, $template in $grids {
+    .sm-grid-#{$element} {
       grid-template-columns: $template;
     }
   }
 
 
   /*Grid gaps*/
-  @each $element, $size in $phone_only_sizes {
-    .grid-gap-#{$element} {
+  @each $element, $size in $sizes {
+    .sm-grid-gap-#{$element} {
       grid-gap: $size;
     }
   }
+
   //Column
-  @each $element, $size in $phone_only_sizes {
-    .grid-col-gap-#{$element} {
+  @each $element, $size in $sizes {
+    .sm-grid-col-gap-#{$element} {
       grid-column-gap: $size;
     }
   }
   //Row
-  @each $element, $size in $phone_only_sizes {
-    .grid-row-gap-#{$element} {
+  @each $element, $size in $sizes {
+    .sm-grid-row-gap-#{$element} {
       grid-row-gap: $size;
     }
   }
-  .flex.row-responsive{
-    flex-direction: column!important;
-  }
-  .hide-phn-only{
-    display: none!important;
-  }
 
-  .bg-color-none-sm{
-    background: none!important;
+  /*::flex*/
+  .sm-flex{
+    display: flex;
   }
 
-  .small-phn-only{
-    button{
-      .material-icons{
-        font-size: 25px!important;
-        padding: 0;
-        margin: 0;
-      }
-
-    }
-  }
-}
-
-@media (min-width: 600px) and (max-width: 899px) {
-    /*tablet-portait-only*/
-
-  /*Padding All*/
-  @each $element, $size in $tablets_portrait_only_sizes {
-    .padding-#{$element} {
-      padding: $size;
-    }
+  .sm-flex.sm-column{
+    flex-direction: column;
   }
 
-  /*PADDING SIDES*/
-
-  @each $side in $sides{
-    @each $element, $size in $tablets_portrait_only_sizes{
-      .padding-#{$side}-#{$element} {
-        padding-#{$side}: $size!important;
-      }
-    }
+  .sm-flex.sm-row{
+    flex-direction: row;
   }
 
-  /*MARGIN All*/
+  .sm-flex.sm-row-responsive{
+    flex-direction: row;
+  }
 
-  @each $element, $size in $tablets_portrait_only_sizes {
-    .margin-#{$element} {
-      margin: $size;
+  .sm-flex.sm-space-between{
+    justify-content: space-between;
+  }
+
+  .sm-flex.sm-space-around{
+    justify-content: space-around;
+  }
+
+  .sm-flex.sm-end{
+    justify-content: flex-end;
+  }
+
+  .sm-flex.sm-start{
+    justify-content: flex-start;
+  }
+
+  .sm-flex.sm-center{
+    justify-content: center;
+  }
+
+  /*::Shadows shadow-**/
+
+  @each $element, $shadow in $shadows {
+    .sm-shadow-#{$element} {
+      box-shadow: $shadow;
     }
   }
 
-  /*MARGIN SIDES*/
+  /*Positioning*/
 
-  @each $side in $sides{
-    @each $element, $size in $tablets_portrait_only_sizes {
-      .margin-#{$side}-#{$element} {
-        margin-#{$side}: $size;
-      }
-    }
+  .sm-fixed{
+    position: fixed!important;
   }
 
-  /*::text-size txt-size-* */
-
-  @each $element, $size in $tablets_portrait_only_sizes {
-    .txt-size-#{$element} {
-      font-size: $size!important;
-    }
+  .sm-absolute{
+    position: absolute;
   }
 
-  @each $element, $template in $tablets_portrait_only_grids {
-    .grid-#{$element} {
-      grid-template-columns: $template;
-    }
+  .sm-relative{
+    position: relative;
   }
-
-
-  /*Grid gaps*/
-  @each $element, $size in $tablets_portrait_only_sizes {
-    .grid-gap-#{$element} {
-      grid-gap: $size;
-    }
-  }
-  //Column
-  @each $element, $size in $tablets_portrait_only_sizes {
-    .grid-col-gap-#{$element} {
-      grid-column-gap: $size;
-    }
-  }
-  //Row
-  @each $element, $size in $tablets_portrait_only_sizes {
-    .grid-row-gap-#{$element} {
-      grid-row-gap: $size;
-    }
-  }
-  .flex.row-responsive{
-    flex-direction: column!important;
-  }
-  .hide-tbl-ptrt-only{
+  .sm-hide{
     display: none;
   }
+}
+//md-css-property
+@media (min-width: 600px) and (max-width: 899px) {
 
-  .bg-color-none-tbl-ptrt{
-    background: none!important;
+
+  .md-container{
+    padding-left: 35px;
+    padding-right: 35px;
+    max-width: 1250px;
+    margin: auto;
   }
 
-}
 
-@media (min-width: 600px) {
-    /*tablet-portrait-up*/
-  .hide-tbl-ptrt-up{
-    display: none!important;
+  @each $element, $size in $sizes {
+    .md-txt-size-#{$element} {
+      font-size: $size!important;
+    }
+  }
+
+  .md-txt-center{
+    text-align: center;
+  }
+  /*::margin:: margin-*-*/
+
+  /*All*/
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .md-m-#{$alias}-#{$element} {
+        @if $side == "all" {
+          margin: $size;
+        } @else {
+          margin-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+  /*::Padding:: p-*-*/
+
+  /*Padding All*/
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .md-p-#{$alias}-#{$element} {
+        @if $side == "all" {
+          padding: $size;
+        } @else {
+          padding-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+
+  /*::width*/
+
+  .md-full-width{
+    width: 100%;
+  }
+
+  /*Align*/
+
+  .md-center{
+    display: flex;
+    justify-content: center;
+  }
+
+  /*::Color */
+
+
+
+  /*::text color:: txt-c-* */
+  @each $element, $color in $colors {
+    .md-txt-c-#{$element} {
+      color: $color;
+    }
+  }
+
+  /*::background:: bg-c-* */
+
+  @each $element, $color in $colors {
+    .md-bg-c-#{$element} {
+      background-color: $color;
+    }
+  }
+
+  /*::border size:: border-s-* */
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .md-bd-w-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-width: $size;
+        } @else {
+          border-#{$side}-width: $size;
+        }
+      }
+    }
+  }
+
+  //*border color*/
+
+  @each $element, $color in $colors {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .md-bd-c-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-color: $color;
+        } @else {
+          border-#{$side}-color: $color;
+        }
+      }
+    }
+  }
+
+
+
+  /*Border-radius*/
+
+  //ALL
+  @each $element, $size in $sizes{
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      @each $s_side in $sides{
+        $s_alias: map_get($side_aliases,$s_side);
+
+        @if ($s_side != "all" and $s_side != $side) {
+          .md-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+            @if $side == "all" {
+              border-radius: $size;
+            } @else {
+              border-#{$s_side}-#{$side}-radius: $size;
+            }
+          }
+        }
+
+      }
+    }
+  }
+  /*::Layout */
+
+  /*::grid */
+
+  .md-grid{
+    display: grid;
+  }
+
+  @each $element, $template in $grids {
+    .md-grid-#{$element} {
+      grid-template-columns: $template;
+    }
+  }
+
+
+  /*Grid gaps*/
+  @each $element, $size in $sizes {
+    .md-grid-gap-#{$element} {
+      grid-gap: $size;
+    }
+  }
+
+  //Column
+  @each $element, $size in $sizes {
+    .md-grid-col-gap-#{$element} {
+      grid-column-gap: $size;
+    }
+  }
+  //Row
+  @each $element, $size in $sizes {
+    .md-grid-row-gap-#{$element} {
+      grid-row-gap: $size;
+    }
+  }
+
+  /*::flex*/
+  .md-flex{
+    display: flex;
+  }
+
+  .md-flex.md-column{
+    flex-direction: column;
+  }
+
+  .md-flex.md-row{
+    flex-direction: row;
+  }
+
+  .md-flex.md-row-responsive{
+    flex-direction: row;
+  }
+
+  .md-flex.md-space-between{
+    justify-content: space-between;
+  }
+
+  .md-flex.md-space-around{
+    justify-content: space-around;
+  }
+
+  .md-flex.md-end{
+    justify-content: flex-end;
+  }
+
+  .md-flex.md-start{
+    justify-content: flex-start;
+  }
+
+  .md-flex.md-center{
+    justify-content: center;
+  }
+
+  /*::Shadows shadow-**/
+
+  @each $element, $shadow in $shadows {
+    .md-shadow-#{$element} {
+      box-shadow: $shadow;
+    }
+  }
+
+  /*Positioning*/
+
+  .md-fixed{
+    position: fixed!important;
+  }
+
+  .md-absolute{
+    position: absolute;
+  }
+
+  .md-relative{
+    position: relative;
+  }
+
+  .md-hide{
+    display: none;
   }
 }
-
+//lg-css-property
 @media (min-width: 900px) and (max-width: 1199px) {
     /*tablet-landscape-only*/
-  .hide-tbl-ldscp-only{
+
+
+  .lg-container{
+    padding-left: 35px;
+    padding-right: 35px;
+    max-width: 1250px;
+    margin: auto;
+  }
+
+
+  @each $element, $size in $sizes {
+    .lg-txt-size-#{$element} {
+      font-size: $size!important;
+    }
+  }
+
+  .lg-txt-center{
+    text-align: center;
+  }
+
+
+
+  /*::margin:: margin-*-*/
+
+  /*All*/
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .lg-m-#{$alias}-#{$element} {
+        @if $side == "all" {
+          margin: $size;
+        } @else {
+          margin-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+  /*::Padding:: p-*-*/
+
+  /*Padding All*/
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .lg-p-#{$alias}-#{$element} {
+        @if $side == "all" {
+          padding: $size;
+        } @else {
+          padding-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+
+  /*::width*/
+
+  .lg-full-width{
+    width: 100%;
+  }
+
+  /*Align*/
+
+  .lg-center{
+    display: flex;
+    justify-content: center;
+  }
+
+  /*::Color */
+
+
+
+  /*::text color:: txt-c-* */
+  @each $element, $color in $colors {
+    .lg-txt-c-#{$element} {
+      color: $color;
+    }
+  }
+
+  /*::background:: bg-c-* */
+
+  @each $element, $color in $colors {
+    .lg-bg-c-#{$element} {
+      background-color: $color;
+    }
+  }
+
+  /*::border size:: border-s-* */
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .lg-bd-w-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-width: $size;
+        } @else {
+          border-#{$side}-width: $size;
+        }
+      }
+    }
+  }
+
+  //*border color*/
+
+  @each $element, $color in $colors {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .lg-bd-c-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-color: $color;
+        } @else {
+          border-#{$side}-color: $color;
+        }
+      }
+    }
+  }
+
+
+
+  /*Border-radius*/
+
+  //ALL
+  @each $element, $size in $sizes{
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      @each $s_side in $sides{
+        $s_alias: map_get($side_aliases,$s_side);
+
+        @if ($s_side != "all" and $s_side != $side) {
+          .lg-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+            @if $side == "all" {
+              border-radius: $size;
+            } @else {
+              border-#{$s_side}-#{$side}-radius: $size;
+            }
+          }
+        }
+
+      }
+    }
+  }
+  /*::Layout */
+
+  /*::grid */
+
+  .lg-grid{
+    display: grid;
+  }
+
+  @each $element, $template in $grids {
+    .lg-grid-#{$element} {
+      grid-template-columns: $template;
+    }
+  }
+
+
+  /*Grid gaps*/
+  @each $element, $size in $sizes {
+    .lg-grid-gap-#{$element} {
+      grid-gap: $size;
+    }
+  }
+
+  //Column
+  @each $element, $size in $sizes {
+    .lg-grid-col-gap-#{$element} {
+      grid-column-gap: $size;
+    }
+  }
+  //Row
+  @each $element, $size in $sizes {
+    .lg-grid-row-gap-#{$element} {
+      grid-row-gap: $size;
+    }
+  }
+
+  /*::flex*/
+  .lg-flex{
+    display: flex;
+  }
+
+  .lg-flex.lg-column{
+    flex-direction: column;
+  }
+
+  .lg-flex.lg-row{
+    flex-direction: row;
+  }
+
+  .lg-flex.lg-row-responsive{
+    flex-direction: row;
+  }
+
+  .lg-flex.lg-space-between{
+    justify-content: space-between;
+  }
+
+  .lg-flex.lg-space-around{
+    justify-content: space-around;
+  }
+
+  .lg-flex.lg-end{
+    justify-content: flex-end;
+  }
+
+  .lg-flex.lg-start{
+    justify-content: flex-start;
+  }
+
+  .lg-flex.lg-center{
+    justify-content: center;
+  }
+
+  /*::Shadows shadow-**/
+
+  @each $element, $shadow in $shadows {
+    .lg-shadow-#{$element} {
+      box-shadow: $shadow;
+    }
+  }
+
+  /*Positioning*/
+
+  .lg-fixed{
+    position: fixed!important;
+  }
+
+  .lg-absolute{
+    position: absolute;
+  }
+
+  .lg-relative{
+    position: relative;
+  }
+
+  .lg-hide{
     display: none;
   }
 }
-
-@media (min-width: 900px) {
-    /*tablet-landscape-up*/
-  .hide-tbl-ldscp-up{
-    display: none!important;
-  }
-
-}
-
+//xlg-css-property
 @media (min-width: 1000px) and (max-width: 1199px){
     /*.desktop-only */
-  .grid-auto{
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))!important;
+
+
+  .xlg-container{
+    padding-left: 35px;
+    padding-right: 35px;
+    max-width: 1250px;
+    margin: auto;
   }
+
+
+  @each $element, $size in $sizes {
+    .xlg-txt-size-#{$element} {
+      font-size: $size!important;
+    }
+  }
+
+  .xlg-txt-center{
+    text-align: center;
+  }
+
+
+
+  /*::margin:: margin-*-*/
+
+  /*All*/
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .xlg-m-#{$alias}-#{$element} {
+        @if $side == "all" {
+          margin: $size;
+        } @else {
+          margin-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+  /*::Padding:: p-*-*/
+
+  /*Padding All*/
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .xlg-p-#{$alias}-#{$element} {
+        @if $side == "all" {
+          padding: $size;
+        } @else {
+          padding-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+
+  /*::width*/
+
+  .xlg-full-width{
+    width: 100%;
+  }
+
+  /*Align*/
+
+  .xlg-center{
+    display: flex;
+    justify-content: center;
+  }
+
+  /*::Color */
+
+
+
+  /*::text color:: txt-c-* */
+  @each $element, $color in $colors {
+    .xlg-txt-c-#{$element} {
+      color: $color;
+    }
+  }
+
+  /*::background:: bg-c-* */
+
+  @each $element, $color in $colors {
+    .xlg-bg-c-#{$element} {
+      background-color: $color;
+    }
+  }
+
+  /*::border size:: border-s-* */
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .xlg-bd-w-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-width: $size;
+        } @else {
+          border-#{$side}-width: $size;
+        }
+      }
+    }
+  }
+
+  //*border color*/
+
+  @each $element, $color in $colors {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .xlg-bd-c-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-color: $color;
+        } @else {
+          border-#{$side}-color: $color;
+        }
+      }
+    }
+  }
+
+
+
+  /*Border-radius*/
+
+  //ALL
+  @each $element, $size in $sizes{
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      @each $s_side in $sides{
+        $s_alias: map_get($side_aliases,$s_side);
+
+        @if ($s_side != "all" and $s_side != $side) {
+          .xlg-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+            @if $side == "all" {
+              border-radius: $size;
+            } @else {
+              border-#{$s_side}-#{$side}-radius: $size;
+            }
+          }
+        }
+
+      }
+    }
+  }
+  /*::Layout */
+
+  /*::grid */
+
+  .xlg-grid{
+    display: grid;
+  }
+
+  @each $element, $template in $grids {
+    .xlg-grid-#{$element} {
+      grid-template-columns: $template;
+    }
+  }
+
+
+  /*Grid gaps*/
+  @each $element, $size in $sizes {
+    .xlg-grid-gap-#{$element} {
+      grid-gap: $size;
+    }
+  }
+
+  //Column
+  @each $element, $size in $sizes {
+    .xlg-grid-col-gap-#{$element} {
+      grid-column-gap: $size;
+    }
+  }
+  //Row
+  @each $element, $size in $sizes {
+    .xlg-grid-row-gap-#{$element} {
+      grid-row-gap: $size;
+    }
+  }
+
+  /*::flex*/
+  .xlg-flex{
+    display: flex;
+  }
+
+  .xlg-flex.xlg-column{
+    flex-direction: column;
+  }
+
+  .xlg-flex.xlg-row{
+    flex-direction: row;
+  }
+
+  .xlg-flex.xlg-row-responsive{
+    flex-direction: row;
+  }
+
+  .xlg-flex.xlg-space-between{
+    justify-content: space-between;
+  }
+
+  .xlg-flex.xlg-space-around{
+    justify-content: space-around;
+  }
+
+  .xlg-flex.xlg-end{
+    justify-content: flex-end;
+  }
+
+  .xlg-flex.xlg-start{
+    justify-content: flex-start;
+  }
+
+  .xlg-flex.xlg-center{
+    justify-content: center;
+  }
+
+  /*::Shadows shadow-**/
+
+  @each $element, $shadow in $shadows {
+    .xlg-shadow-#{$element} {
+      box-shadow: $shadow;
+    }
+  }
+
+  /*Positioning*/
+
+  .xlg-fixed{
+    position: fixed!important;
+  }
+
+  .xlg-absolute{
+    position: absolute;
+  }
+
+  .xlg-relative{
+    position: relative;
+  }
+
+  .xlg-hide{
+    display: none;
+  }
+
 }
-
-@media (min-width: 1200px) and (max-width: 1799px) {
-    /*.desktop-only */
-
-}
-
+//xxlg-css-property
 @media (min-width: 1200px) {
     /*.desktop-up */
 
-}
 
-@media (min-width: 1800px) {
-    /*.big-desktop-up */
+  .xxlg-container{
+    padding-left: 35px;
+    padding-right: 35px;
+    max-width: 1250px;
+    margin: auto;
+  }
 
+
+  @each $element, $size in $sizes {
+    .xxlg-txt-size-#{$element} {
+      font-size: $size!important;
+    }
+  }
+
+  .xxlg-txt-center{
+    text-align: center;
+  }
+
+
+
+  /*::margin:: margin-*-*/
+
+  /*All*/
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .xxlg-m-#{$alias}-#{$element} {
+        @if $side == "all" {
+          margin: $size;
+        } @else {
+          margin-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+  /*::Padding:: p-*-*/
+
+  /*Padding All*/
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .xxlg-p-#{$alias}-#{$element} {
+        @if $side == "all" {
+          padding: $size;
+        } @else {
+          padding-#{$side}: $size;
+        }
+      }
+    }
+  }
+
+
+  /*::width*/
+
+  .xxlg-full-width{
+    width: 100%;
+  }
+
+  /*Align*/
+
+  .xxlg-center{
+    display: flex;
+    justify-content: center;
+  }
+
+  /*::Color */
+
+
+
+  /*::text color:: txt-c-* */
+  @each $element, $color in $colors {
+    .xxlg-txt-c-#{$element} {
+      color: $color;
+    }
+  }
+
+  /*::background:: bg-c-* */
+
+  @each $element, $color in $colors {
+    .xxlg-bg-c-#{$element} {
+      background-color: $color;
+    }
+  }
+
+  /*::border size:: border-s-* */
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .xxlg-bd-w-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-width: $size;
+        } @else {
+          border-#{$side}-width: $size;
+        }
+      }
+    }
+  }
+
+  //*border color*/
+
+  @each $element, $color in $colors {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      .xxlg-bd-c-#{$alias}-#{$element} {
+        @if $side == "all" {
+          border-color: $color;
+        } @else {
+          border-#{$side}-color: $color;
+        }
+      }
+    }
+  }
+
+
+
+  /*Border-radius*/
+
+  //ALL
+  @each $element, $size in $sizes{
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      @each $s_side in $sides{
+        $s_alias: map_get($side_aliases,$s_side);
+
+        @if ($s_side != "all" and $s_side != $side) {
+          .xxlg-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+            @if $side == "all" {
+              border-radius: $size;
+            } @else {
+              border-#{$s_side}-#{$side}-radius: $size;
+            }
+          }
+        }
+
+      }
+    }
+  }
+  /*::Layout */
+
+  /*::grid */
+
+  .xxlg-grid{
+    display: grid;
+  }
+
+  @each $element, $template in $grids {
+    .xxlg-grid-#{$element} {
+      grid-template-columns: $template;
+    }
+  }
+
+
+  /*Grid gaps*/
+  @each $element, $size in $sizes {
+    .xxlg-grid-gap-#{$element} {
+      grid-gap: $size;
+    }
+  }
+
+  //Column
+  @each $element, $size in $sizes {
+    .xxlg-grid-col-gap-#{$element} {
+      grid-column-gap: $size;
+    }
+  }
+  //Row
+  @each $element, $size in $sizes {
+    .xxlg-grid-row-gap-#{$element} {
+      grid-row-gap: $size;
+    }
+  }
+
+  /*::flex*/
+  .xxlg-flex{
+    display: flex;
+  }
+
+  .xxlg-flex.xxlg-column{
+    flex-direction: column;
+  }
+
+  .xxlg-flex.xxlg-row{
+    flex-direction: row;
+  }
+
+  .xxlg-flex.xxlg-row-responsive{
+    flex-direction: row;
+  }
+
+  .xxlg-flex.xxlg-space-between{
+    justify-content: space-between;
+  }
+
+  .xxlg-flex.xxlg-space-around{
+    justify-content: space-around;
+  }
+
+  .xxlg-flex.xxlg-end{
+    justify-content: flex-end;
+  }
+
+  .xxlg-flex.xxlg-start{
+    justify-content: flex-start;
+  }
+
+  .xxlg-flex.xxlg-center{
+    justify-content: center;
+  }
+
+  /*::Shadows shadow-**/
+
+  @each $element, $shadow in $shadows {
+    .xxlg-shadow-#{$element} {
+      box-shadow: $shadow;
+    }
+  }
+
+  /*Positioning*/
+
+  .xxlg-fixed{
+    position: fixed!important;
+  }
+
+  .xxlg-absolute{
+    position: absolute;
+  }
+
+  .xxlg-relative{
+    position: relative;
+  }
+
+  .xxlg-hide{
+    display: none;
+  }
 }

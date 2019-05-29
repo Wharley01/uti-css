@@ -40,20 +40,6 @@ button{
 }
 
 
-/*--xxxsm: 7px;*/
-/*--xxsm: 14px;*/
-/*--xsm: 21px;*/
-/*--sm: 28px;*/
-/*--md: 35px;*/
-/*--lg: 56px;*/
-/*--xlg: 63px;*/
-/*--xxlg: 70px;*/
-/*--xxxlg: 77px;*/
-
-/*::Sizing*/
-
-/*::text-size txt-size-* */
-
 @each $element, $size in $sizes {
   .txt-size-#{$element} {
     font-size: $size!important;
@@ -207,6 +193,7 @@ button{
     grid-gap: $size;
   }
 }
+
 //Column
 @each $element, $size in $sizes {
   .grid-col-gap-#{$element} {
@@ -279,6 +266,9 @@ button{
   position: relative;
 }
 
+.hide{
+  display: none;
+}
 /*loader CSS*/
 
 .lds-ellipsis {

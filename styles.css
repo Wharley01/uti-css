@@ -42,17 +42,6 @@ button {
   margin: auto;
 }
 
-/*--xxxsm: 7px;*/
-/*--xxsm: 14px;*/
-/*--xsm: 21px;*/
-/*--sm: 28px;*/
-/*--md: 35px;*/
-/*--lg: 56px;*/
-/*--xlg: 63px;*/
-/*--xxlg: 70px;*/
-/*--xxxlg: 77px;*/
-/*::Sizing*/
-/*::text-size txt-size-* */
 .txt-size-xxxsm {
   font-size: 8px !important;
 }
@@ -2149,6 +2138,10 @@ button {
 
 .relative {
   position: relative;
+}
+
+.hide {
+  display: none;
 }
 
 /*loader CSS*/
