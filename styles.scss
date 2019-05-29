@@ -1,0 +1,342 @@
+@import "imports";
+/*Variables*/
+
+@import "variables";
+
+
+/*Global Styling*/
+*{
+  box-sizing: border-box;
+  transition: .3s all;
+}
+a{
+  text-decoration: none;
+  color: map_get($colors,link-color);
+}
+
+body{
+  font-family: 'Josefin Sans', sans-serif!important;
+  margin: 0;
+  padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Josefin Sans', sans-serif!important;
+}
+
+
+input,textarea,button{
+  font-family: 'Poppins', sans-serif!important;
+}
+
+button{
+  outline: 0!important;
+}
+
+.container{
+  padding-left: 35px;
+  padding-right: 35px;
+  max-width: 1250px;
+  margin: auto;
+}
+
+
+/*--xxxsm: 7px;*/
+/*--xxsm: 14px;*/
+/*--xsm: 21px;*/
+/*--sm: 28px;*/
+/*--md: 35px;*/
+/*--lg: 56px;*/
+/*--xlg: 63px;*/
+/*--xxlg: 70px;*/
+/*--xxxlg: 77px;*/
+
+/*::Sizing*/
+
+/*::text-size txt-size-* */
+
+@each $element, $size in $sizes {
+  .txt-size-#{$element} {
+    font-size: $size!important;
+  }
+}
+
+.txt-center{
+  text-align: center;
+}
+
+
+
+/*::margin:: margin-*-*/
+
+/*All*/
+
+@each $element, $size in $sizes {
+  @each $side in $sides{
+    $alias: map_get($side_aliases,$side);
+    .m-#{$alias}-#{$element} {
+      @if $side == "all" {
+        margin: $size;
+      } @else {
+        margin-#{$side}: $size;
+      }
+    }
+  }
+}
+
+/*::Padding:: p-*-*/
+
+/*Padding All*/
+@each $element, $size in $sizes {
+  @each $side in $sides{
+    $alias: map_get($side_aliases,$side);
+    .p-#{$alias}-#{$element} {
+      @if $side == "all" {
+        padding: $size;
+      } @else {
+        padding-#{$side}: $size;
+      }
+    }
+  }
+}
+
+
+/*::width*/
+
+.full-width{
+  width: 100%;
+}
+
+/*Align*/
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+/*::Color */
+
+
+
+/*::text color:: txt-c-* */
+@each $element, $color in $colors {
+  .txt-c-#{$element} {
+    color: $color;
+  }
+}
+
+/*::background:: bg-c-* */
+
+@each $element, $color in $colors {
+  .bg-c-#{$element} {
+    background-color: $color;
+  }
+}
+
+/*::border size:: border-s-* */
+
+@each $element, $size in $sizes {
+  @each $side in $sides{
+    $alias: map_get($side_aliases,$side);
+    .bd-w-#{$alias}-#{$element} {
+      @if $side == "all" {
+        border-width: $size;
+      } @else {
+        border-#{$side}-width: $size;
+      }
+    }
+  }
+}
+
+//*border color*/
+
+@each $element, $color in $colors {
+  @each $side in $sides{
+    $alias: map_get($side_aliases,$side);
+    .bd-c-#{$alias}-#{$element} {
+      @if $side == "all" {
+        border-color: $color;
+      } @else {
+        border-#{$side}-color: $color;
+      }
+    }
+  }
+}
+
+
+
+/*Border-radius*/
+
+//ALL
+@each $element, $size in $sizes{
+  @each $side in $sides{
+    $alias: map_get($side_aliases,$side);
+    @each $s_side in $sides{
+      $s_alias: map_get($side_aliases,$s_side);
+
+      @if ($s_side != "all" and $s_side != $side) {
+        .bd-round-#{$s_alias}-#{$alias}-#{$element} {
+          @if $side == "all" {
+            border-radius: $size;
+          } @else {
+            border-#{$s_side}-#{$side}-radius: $size;
+          }
+        }
+      }
+
+    }
+  }
+}
+/*::Layout */
+
+/*::grid */
+
+.grid{
+  display: grid;
+}
+
+@each $element, $template in $grids {
+  .grid-#{$element} {
+    grid-template-columns: $template;
+  }
+}
+
+
+/*Grid gaps*/
+@each $element, $size in $sizes {
+  .grid-gap-#{$element} {
+    grid-gap: $size;
+  }
+}
+//Column
+@each $element, $size in $sizes {
+  .grid-col-gap-#{$element} {
+    grid-column-gap: $size;
+  }
+}
+//Row
+@each $element, $size in $sizes {
+  .grid-row-gap-#{$element} {
+    grid-row-gap: $size;
+  }
+}
+
+/*::flex*/
+.flex{
+  display: flex;
+}
+
+.flex.column{
+  flex-direction: column;
+}
+
+.flex.row{
+  flex-direction: row;
+}
+
+.flex.row-responsive{
+  flex-direction: row;
+}
+
+.flex.space-between{
+  justify-content: space-between;
+}
+
+.flex.space-around{
+  justify-content: space-around;
+}
+
+.flex.end{
+  justify-content: flex-end;
+}
+
+.flex.start{
+  justify-content: flex-start;
+}
+
+.flex.center{
+  justify-content: center;
+}
+
+/*::Shadows shadow-**/
+
+@each $element, $shadow in $shadows {
+  .shadow-#{$element} {
+    box-shadow: $shadow;
+  }
+}
+
+/*Positioning*/
+
+.fixed{
+  position: fixed!important;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
+}
+
+/*loader CSS*/
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: map_get($colors,primary);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+
+.invisible{
+  visibility: hidden;
+}

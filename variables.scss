@@ -1,0 +1,155 @@
+$colors:(
+        pry: #FF4900,
+  /*Shade gets lighter*/
+        pry-shade-1: #FD743D,
+        pry-shade-2: #FE8E60,
+        pry-shade-3: #FDB294,
+
+        link-color: #3F51B5,
+
+        black: #1C1C1C,
+        black-shade-1: #3A3A3A,
+        black-shade-2: #626262,
+        black-shade-3: #939393,
+
+        grey: #A4A4A4,
+        grey-shade-1: #C0C0C0,
+        grey-shade-2: #D3D3D3,
+        grey-shade-3: #F1F1F1,
+
+        white: #fff,
+        none: transparent
+
+
+);
+
+$unit_size: 8px;
+/*Sizing*/
+$sizes:(
+        xxxsm: $unit_size,
+        xxsm: $unit_size * 2,
+        xsm: $unit_size * 3,
+        sm: $unit_size * 4,
+        md: $unit_size * 5,
+        lg: $unit_size * 6,
+        xlg: $unit_size * 7,
+        xxlg: $unit_size * 8,
+        xxxlg: $unit_size * 9,
+        none: 0,
+        auto: auto
+);
+
+$phone_only_unit_size: 6px;
+/*Sizing*/
+$phone_only_sizes:(
+        xxxsm: $unit_size,
+        xxsm: $unit_size * 1,
+        xsm: $unit_size * 2,
+        sm: $unit_size * 3,
+        md: $unit_size * 4,
+        lg: $unit_size * 5,
+        xlg: $unit_size * 5,
+        xxlg: $unit_size * 5,
+        xxxlg: $unit_size * 5,
+        none: 0,
+        auto: auto
+);
+
+
+
+$tablets_portrait_only_unit_size: 8px;
+/*Sizing*/
+$tablets_portrait_only_sizes:(
+        xxxsm: $unit_size,
+        xxsm: $unit_size * 2,
+        xsm: $unit_size * 3,
+        sm: $unit_size * 4,
+        md: $unit_size * 5,
+        lg: $unit_size * 6,
+        xlg: $unit_size * 7,
+        xxlg: $unit_size * 8,
+        xxxlg: $unit_size * 9,
+        none: 0,
+        auto: auto
+);
+
+$shadows:(
+        normal: 13px 11px 59px rgba(0, 0, 0, 0.15),
+        light: 0px 4px 41px rgba(175, 175, 175, 0.25),
+        dark: 13px 11px 59px rgba(0, 0, 0, 0.38),
+        darker: 13px 11px 59px rgba(0, 0, 0, 0.48)
+);
+
+$grids:(
+        1x1: 1fr 1fr,
+        1x1x1: 1fr 1fr 1fr,
+        1x1x1x1: 1fr 1fr 1fr 1fr,
+        1x2:1fr 2fr,
+        2x1:2fr 1fr,
+        3x1:3fr 1fr,
+        1x1x2:1fr 2fr,
+        2x1x1:1fr 2fr,
+        1x3:1fr 3fr,
+        auto: repeat(auto-fill, minmax(250px,1fr))
+);
+
+$phone_only_grids:(
+        1x1: 1fr!important,
+        1x1x1: 1fr!important,
+        1x1x1x1: 1fr!important,
+        1x2:1fr!important,
+        2x1:2fr!important,
+        3x1:1fr!important,
+        1x1x2:1fr!important,
+        2x1x1:1fr!important,
+        1x3:1fr!important,
+        auto: repeat(auto-fill, minmax(250px,1fr))
+);
+
+$tablets_portrait_only_grids:(
+        1x1: 1fr 1fr,
+        1x1x1: 1fr 1fr,
+        1x1x1x1: 1fr 1fr,
+        1x2:1fr 2fr,
+        2x1:2fr 1fr,
+        3x1:3fr 1fr,
+        1x1x2:1fr 2fr,
+        2x1x1:1fr 2fr,
+        1x3:1fr 3fr,
+        auto: repeat(auto-fill, minmax(250px,1fr))
+);
+
+$tablets_landscape_only_grids:(
+        1x1: 1fr 1fr,
+        1x1x1: 1fr 1fr 1fr,
+        1x1x1x1: 1fr 1fr 1fr,
+        1x2:1fr 2fr,
+        2x1:2fr 1fr,
+        3x1:3fr 1fr,
+        1x1x2:1fr 2fr,
+        2x1x1:1fr 2fr,
+        1x3:1fr 3fr,
+        auto: repeat(auto-fill, minmax(250px,1fr))
+);
+
+$desktop_up_grid:(
+        1x1: 1fr 1fr,
+        1x1x1: 1fr 1fr 1fr,
+        1x1x1x1: 1fr 1fr 1fr 1fr,
+        1x2:1fr 2fr,
+        2x1:2fr 1fr,
+        3x1:3fr 1fr,
+        1x1x2:1fr 2fr,
+        2x1x1:1fr 2fr,
+        1x3:1fr 3fr,
+        auto: repeat(auto-fill, minmax(250px,1fr))
+);
+$side_aliases:(
+        top:t,
+        bottom:b,
+        left:l,
+        right:r,
+        all:a
+);
+
+$sides: top, bottom, right, left, all;

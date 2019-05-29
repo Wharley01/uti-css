@@ -1,0 +1,228 @@
+@import "variables";
+
+@media (max-width: 599px) {
+    /*.phone-only */
+  .container{
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+    max-width: 1250px;
+    margin: auto;
+  }
+  /*Padding All*/
+  @each $element, $size in $phone_only_sizes {
+    .padding-#{$element} {
+      padding: $size;
+    }
+  }
+
+  /*PADDING SIDES*/
+
+  @each $side in $sides{
+    @each $element, $size in $phone_only_sizes{
+      .padding-#{$side}-#{$element} {
+        padding-#{$side}: $size!important;
+      }
+    }
+  }
+
+  /*MARGIN All*/
+
+  @each $element, $size in $phone_only_sizes {
+    .margin-#{$element} {
+      margin: $size;
+    }
+  }
+
+  /*MARGIN SIDES*/
+
+  @each $side in $sides{
+    @each $element, $size in $phone_only_sizes {
+      .margin-#{$side}-#{$element} {
+        margin-#{$side}: $size;
+      }
+    }
+  }
+
+  /*::text-size txt-size-* */
+
+  @each $element, $size in $phone_only_sizes {
+    .txt-size-#{$element} {
+      font-size: $size!important;
+    }
+  }
+
+  @each $element, $template in $phone_only_grids {
+    .grid-#{$element} {
+      grid-template-columns: $template;
+    }
+  }
+
+
+  /*Grid gaps*/
+  @each $element, $size in $phone_only_sizes {
+    .grid-gap-#{$element} {
+      grid-gap: $size;
+    }
+  }
+  //Column
+  @each $element, $size in $phone_only_sizes {
+    .grid-col-gap-#{$element} {
+      grid-column-gap: $size;
+    }
+  }
+  //Row
+  @each $element, $size in $phone_only_sizes {
+    .grid-row-gap-#{$element} {
+      grid-row-gap: $size;
+    }
+  }
+  .flex.row-responsive{
+    flex-direction: column!important;
+  }
+  .hide-phn-only{
+    display: none!important;
+  }
+
+  .bg-color-none-sm{
+    background: none!important;
+  }
+
+  .small-phn-only{
+    button{
+      .material-icons{
+        font-size: 25px!important;
+        padding: 0;
+        margin: 0;
+      }
+
+    }
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+    /*tablet-portait-only*/
+
+  /*Padding All*/
+  @each $element, $size in $tablets_portrait_only_sizes {
+    .padding-#{$element} {
+      padding: $size;
+    }
+  }
+
+  /*PADDING SIDES*/
+
+  @each $side in $sides{
+    @each $element, $size in $tablets_portrait_only_sizes{
+      .padding-#{$side}-#{$element} {
+        padding-#{$side}: $size!important;
+      }
+    }
+  }
+
+  /*MARGIN All*/
+
+  @each $element, $size in $tablets_portrait_only_sizes {
+    .margin-#{$element} {
+      margin: $size;
+    }
+  }
+
+  /*MARGIN SIDES*/
+
+  @each $side in $sides{
+    @each $element, $size in $tablets_portrait_only_sizes {
+      .margin-#{$side}-#{$element} {
+        margin-#{$side}: $size;
+      }
+    }
+  }
+
+  /*::text-size txt-size-* */
+
+  @each $element, $size in $tablets_portrait_only_sizes {
+    .txt-size-#{$element} {
+      font-size: $size!important;
+    }
+  }
+
+  @each $element, $template in $tablets_portrait_only_grids {
+    .grid-#{$element} {
+      grid-template-columns: $template;
+    }
+  }
+
+
+  /*Grid gaps*/
+  @each $element, $size in $tablets_portrait_only_sizes {
+    .grid-gap-#{$element} {
+      grid-gap: $size;
+    }
+  }
+  //Column
+  @each $element, $size in $tablets_portrait_only_sizes {
+    .grid-col-gap-#{$element} {
+      grid-column-gap: $size;
+    }
+  }
+  //Row
+  @each $element, $size in $tablets_portrait_only_sizes {
+    .grid-row-gap-#{$element} {
+      grid-row-gap: $size;
+    }
+  }
+  .flex.row-responsive{
+    flex-direction: column!important;
+  }
+  .hide-tbl-ptrt-only{
+    display: none;
+  }
+
+  .bg-color-none-tbl-ptrt{
+    background: none!important;
+  }
+
+}
+
+@media (min-width: 600px) {
+    /*tablet-portrait-up*/
+  .hide-tbl-ptrt-up{
+    display: none!important;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+    /*tablet-landscape-only*/
+  .hide-tbl-ldscp-only{
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+    /*tablet-landscape-up*/
+  .hide-tbl-ldscp-up{
+    display: none!important;
+  }
+
+}
+
+@media (min-width: 1000px) and (max-width: 1199px){
+    /*.desktop-only */
+  .grid-auto{
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))!important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1799px) {
+    /*.desktop-only */
+
+}
+
+@media (min-width: 1200px) {
+    /*.desktop-up */
+
+}
+
+@media (min-width: 1800px) {
+    /*.big-desktop-up */
+
+}
