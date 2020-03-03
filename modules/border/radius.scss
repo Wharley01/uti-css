@@ -1,0 +1,63 @@
+@mixin border-radius-for-screen($screen,$state,$state_name){
+  /*Border-radius*/
+
+  //ALL
+  @each $element,
+  $size in $sizes {
+    @each $side in $sides {
+      $alias: map_get($side_aliases, $side);
+
+      @if $side=="all" {
+        .#{$state_name}#{$screen}bd-round-#{$element}#{$state} {
+          border-radius: $size!important;
+        }
+      } @else {
+        @each $s_side in $sides {
+          $s_alias: map_get($side_aliases, $s_side);
+
+          @if ($s_side !="all" and $s_side !=$side) {
+            .#{$state_name}#{$screen}bd-round-#{$s_alias}-#{$alias}-#{$element}#{$state} {
+              @if $side=="all" {
+                border-radius: $size!important;
+              }
+              @else {
+                border-#{$s_side}-#{$side}-radius: $size!important;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+
+@include border-radius-for-screen('','','');
+
+@media only screen and (max-width: 599px) {
+  @include border-radius-for-screen('sm-','','');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include border-radius-for-screen('md-','','');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include border-radius-for-screen('lg-','','');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include border-radius-for-screen('xlg-','','');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include border-radius-for-screen('xxlg-','','');
+}
+
+@include border-radius-for-screen('',':hover','hover\\:')

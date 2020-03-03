@@ -1,0 +1,43 @@
+*{
+  box-sizing: border-box;
+  transition: .3s all;
+}
+body{
+  font-family: $normal_text_font!important;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.03em!important;
+  font-size: $font_size;
+}
+p{
+  font-family: $normal_text_font!important;
+  letter-spacing: $letter_spacing;
+  line-height: $line_spacing;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: $font_size;
+
+}
+a{
+  font-family: $normal_text_font!important;
+  font-size: $font_size;
+  cursor: pointer;
+  text-decoration: none;
+  color: map_get($colors,link-color);
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: $head_text_font;
+  line-height: 171.9%;
+  letter-spacing: 0.03em;
+}
+.h{
+  font-family: $normal_text_font!important;
+}
+
+input,textarea,button{
+  font-family: inherit;
+}
+
+.grid > div{
+  min-width: 0;
+}

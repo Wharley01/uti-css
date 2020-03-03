@@ -1,0 +1,49 @@
+@mixin flex-alignment-for-screen($screen){
+  /*Align*/
+  .#{$screen}center{
+    display: flex!important;
+    justify-content: center!important;
+  }
+
+  .#{$screen}end{
+    justify-content: flex-end!important;
+  }
+
+  .#{$screen}start{
+    justify-content: flex-start!important;
+  }
+
+  .#{$screen}center{
+    justify-content: center!important;
+  }
+
+}
+
+
+@include flex-alignment-for-screen('');
+
+@media only screen and (max-width: 599px) {
+  @include flex-alignment-for-screen('sm-');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include flex-alignment-for-screen('md-');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include flex-alignment-for-screen('lg-');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include flex-alignment-for-screen('xlg-');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include flex-alignment-for-screen('xxlg-');
+}
+
+

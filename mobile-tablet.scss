@@ -1,0 +1,96 @@
+@import "config";
+.container{
+  padding-left: 10px!important;
+  padding-right: 10px!important;
+}
+
+.socials{
+  max-width: 400px;
+  button{
+    border-radius: 100%!important;
+    padding: 5px!important;
+  }
+  button:hover{
+    margin-top: 5px!important;
+  }
+
+}
+
+.account-link{
+  min-width: 80px!important;
+}
+
+
+nav {
+  > ul:not(.actions){
+    display: none!important;
+  }
+  justify-content: space-between;
+  > ul.actions{
+    li:not(.search_btn){
+      display: none;
+    }
+    li.search_btn{
+      margin-left: auto;
+    }
+  }
+}
+
+
+input[type=text],input[type=email],input[type=password],textarea{
+  display: block;
+  width: 100%;
+  padding: map_get($sizes,xxxsm)!important;
+  border-radius: map_get($sizes,xxxsm);
+  border: 1px solid map_get($colors,grey-shade-2);
+  resize: vertical;
+}
+
+.trending-article{
+  min-width: 0;
+  &:hover{
+    box-shadow: 12px 3px 41px rgba(33, 117, 155, 0.13);
+  }
+  display: flex;
+  flex-direction: column;
+  min-height: 240px!important;
+  label{
+    text-transform: uppercase;
+    letter-spacing: 5px
+  }
+  .img{
+    position: relative;
+    img,.img{
+      width: 100%;
+      /*max-width: 130px!important;*/
+      object-fit: cover!important;
+      border-top-left-radius: 15px!important;
+      border-top-right-radius: 15px!important;
+      height: 110px!important;
+    }
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    z-index: 1;
+    min-height: 110px!important;
+    .shade{
+      z-index: 2;
+      position: absolute;
+      background: rgba(0,0,0,0.3);
+      height: 100%;
+      min-height: 200px;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .user-name{
+      /*text-transform: uppercase;*/
+
+    }
+  }
+
+}
+
+main{
+  padding-left: 10px!important;
+  padding-right: 10px!important;
+}

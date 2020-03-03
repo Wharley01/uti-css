@@ -1,0 +1,39 @@
+@mixin text-color-for-screen($screen,$state,$state_name){
+  /*::text color:: txt-c-* */
+  @each $element, $color in $colors {
+    .#{$state_name}#{$screen}txt-c-#{$element}#{$state} {
+      color: $color!important;
+    }
+  }
+
+}
+
+
+@include text-color-for-screen('','','');
+@include text-color-for-screen('',':hover','hover\\:');
+
+@media only screen and (max-width: 599px) {
+  @include text-color-for-screen('sm-','','');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include text-color-for-screen('md-','','');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include text-color-for-screen('lg-','','');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include text-color-for-screen('xlg-','','');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include text-color-for-screen('xxlg-','','');
+}
+
+

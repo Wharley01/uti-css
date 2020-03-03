@@ -1,0 +1,51 @@
+@mixin display-for-screen($screen,$state,$state_name){
+  .#{$state_name}#{$screen}hide#{$state}{
+    display: none!important;
+  }
+  .#{$state_name}#{$screen}block#{$state}{
+    display: block!important;
+  }
+  .#{$state_name}#{$screen}inline-block#{$state}{
+    display: inline-block!important;
+  }
+  .#{$state_name}#{$screen}table#{$state}{
+    display: table!important;
+  }
+  .#{$state_name}#{$screen}inline#{$state} {
+    display: inline!important;
+  }
+  .#{$state_name}#{$screen}pull-down#{$state}{
+    grid-row-start: 2;
+  }
+}
+
+
+@include display-for-screen('','','');
+
+@media only screen and (max-width: 599px) {
+  @include display-for-screen('sm-','','');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include display-for-screen('md-','','');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include display-for-screen('lg-','','');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include display-for-screen('xlg-','','');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include display-for-screen('xxlg-','','');
+}
+
+@include display-for-screen('',':hover','hover\\:');
+
+

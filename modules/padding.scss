@@ -1,0 +1,50 @@
+@mixin padding-for-screen($screen,$state,$state_name){
+  /*::Padding:: p-*-*/
+
+  /*Padding All*/
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+
+        @if $side == "all" {
+          .#{$state_name}#{$screen}p-#{$element}#{$state}{
+            padding: $size!important;
+          }
+        } @else {
+          .#{$state_name}#{$screen}p-#{$alias}-#{$element}#{$state}{
+            padding-#{$side}: $size!important;
+          }
+        }
+
+    }
+  }
+
+}
+
+
+@include padding-for-screen('','','');
+
+@media only screen and (max-width: 599px) {
+  @include padding-for-screen('sm-','','');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include padding-for-screen('md-','','');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include padding-for-screen('lg-','','');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include padding-for-screen('xlg-','','');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include padding-for-screen('xxlg-','','');
+}
+

@@ -1,0 +1,38 @@
+@mixin background-for-screen($screen,$state,$state_name){
+  /*::background:: bg-c-* */
+
+  @each $element, $color in $colors {
+    .#{$state_name}#{$screen}bg-#{$element}#{$state} {
+      background-color: $color!important;
+    }
+  }
+}
+
+
+@include background-for-screen('','','');
+
+@media only screen and (max-width: 599px) {
+  @include background-for-screen('sm-','','');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include background-for-screen('md-','','');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include background-for-screen('lg-','','');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+   @include background-for-screen('xlg-','','');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+   @include background-for-screen('xxlg-','','');
+}
+
+@include background-for-screen('',':hover','hover\\:');

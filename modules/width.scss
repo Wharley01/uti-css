@@ -1,0 +1,50 @@
+@mixin width-for-screen($screen,$state,$state_name){
+  /*WIDTH*/
+  @each $element, $size in $sizes {
+    .#{$state_name}#{$screen}w-#{$element}#{$state} {
+      width: $size!important;
+    }
+  }
+
+  .#{$state_name}#{$screen}flat-y#{$state}{
+    max-height: 0!important;
+    overflow: hidden!important;
+  }
+
+  .#{$state_name}#{$screen}flat-x#{$state}{
+    max-width: 0!important;
+    overflow: hidden!important;
+  }
+  /*::width*/
+  .#{$state_name}#{$screen}full-width#{$state}{
+    width: 100%;
+  }
+
+}
+
+@include width-for-screen('','','');
+
+@media only screen and (max-width: 599px) {
+  @include width-for-screen('sm-','','');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include width-for-screen('md-','','');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include width-for-screen('lg-','','');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include width-for-screen('xlg-','','');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include width-for-screen('xxlg-','','');
+}
+@include width-for-screen('',':hover','hover\\:');

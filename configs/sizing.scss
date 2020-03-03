@@ -1,0 +1,34 @@
+@function toRem($size) {
+  @return $size;
+}
+
+$unit_size: 1.9px;
+/*Sizing*/
+$sizes: (
+        x2: toRem($unit_size * 2),
+        x4: toRem($unit_size * 4),
+        x5: toRem($unit_size * 5),
+        x6: toRem($unit_size * 6),
+        x7: toRem($unit_size * 7),
+        x8: toRem($unit_size * 8),
+        x9: toRem($unit_size * 9),
+        x10: toRem($unit_size * 12),
+        x11: toRem($unit_size * 16),
+        x12: toRem($unit_size * 21),
+        x13: toRem($unit_size * 28),
+        x14: toRem($unit_size * 42),
+        x15: toRem($unit_size * 63),
+        x16: toRem($unit_size * 90),
+        x17: toRem($unit_size * 120),
+        x18: toRem($unit_size * 140),
+        x19: toRem($unit_size * 160),
+        x20: toRem($unit_size * 180),
+        none: 0,
+        full: 100%,
+        half: 50%,
+        auto: auto
+);
+
+$letter_spacing: .3px;
+$line_spacing: 180%;
+$font_size: 14px;

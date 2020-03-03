@@ -1,0 +1,71 @@
+@mixin margin-for-screen($screen,$state,$state_name){
+  /*::margin:: margin-*-*/
+
+  /*All*/
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+        @if $side == "all" {
+          .#{$state_name}#{$screen}m-#{$element}#{$state} {
+            margin: $size !important;
+          }
+        } @else {
+          .#{$state_name}#{$screen}m-#{$alias}-#{$element}#{$state} {
+            margin-#{$side}: $size !important;
+          }
+        }
+
+    }
+  }
+
+  /*:: negative margin:: margin-*-*/
+
+  /*All*/
+
+  @each $element, $size in $sizes {
+    @each $side in $sides{
+      $alias: map_get($side_aliases,$side);
+      @if $side == "all" {
+        .#{$state_name}#{$screen}neg\\:m-#{$element}#{$state} {
+          margin: -$size !important;
+        }
+      } @else {
+        .#{$state_name}#{$screen}neg\\:m-#{$alias}-#{$element}#{$state} {
+          margin-#{$side}: -$size !important;
+        }
+      }
+    }
+  }
+
+}
+
+
+@include margin-for-screen('','','');
+
+@media only screen and (max-width: 599px) {
+  @include margin-for-screen('sm-','','');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include margin-for-screen('md-','','');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include margin-for-screen('lg-','','');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include margin-for-screen('xlg-','','');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include margin-for-screen('xxlg-','','');
+}
+
+@include margin-for-screen('',':hover','hover\\:');
+

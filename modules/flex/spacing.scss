@@ -1,0 +1,42 @@
+@mixin flex-spacing-for-screen($screen){
+
+
+
+  .#{$screen}space-between{
+    justify-content: space-between!important;
+  }
+
+  .#{$screen}space-around{
+    justify-content: space-around!important;
+  }
+
+}
+
+
+
+@include flex-spacing-for-screen('');
+
+@media only screen and (max-width: 599px) {
+  @include flex-spacing-for-screen('sm-');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include flex-spacing-for-screen('md-');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include flex-spacing-for-screen('lg-');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include flex-spacing-for-screen('xlg-');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include flex-spacing-for-screen('xxlg-');
+}
+

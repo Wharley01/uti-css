@@ -1,0 +1,33 @@
+:root{
+  --pry: #A945FF;
+  --pry-tint-1: #DF99FF;
+  --pry-tint-2: #EFCCFF;
+  --pry-shade-1: #13062C;
+  --pry-shade-2: #13062C;
+  --pry-shade-3: #0b071d;
+  --link-color: #A945FF;
+  --black: #151a28;
+  --yellow: #EBEF3B;
+  --white: #fff;
+  --none: transparent;
+  --error: #ef4e23;
+  --success: #59d065;
+  --info: #54c5dd
+}
+
+$colors: (
+        pry: var(--pry),
+        pry-tint-1: var(--pry-tint-1),
+        pry-tint-2: var(--pry-tint-2),
+        pry-shade-1: var(--pry-shade-1),
+        pry-shade-2: var(--pry-shade-2),
+        pry-shade-3: var(--pry-shade-3),
+        link-color: var(--link-color),
+        black: var(--black),
+        yellow: var(--yellow),
+        white: var(--white),
+        none: var(--none),
+        error: var(--error),
+        success: var(--success),
+        info: var(--info)
+);

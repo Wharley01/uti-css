@@ -1,0 +1,64 @@
+@mixin grid-for-screen($screen){
+
+  /*::grid */
+
+  .#{$screen}grid{
+    display: grid!important;
+  }
+
+  @each $element, $template in $grids {
+    .#{$screen}grid-#{$element} {
+      grid-template-columns: $template!important;
+    }
+  }
+
+
+  /*Grid gaps*/
+  @each $element, $size in $sizes {
+    .#{$screen}grid-gap-#{$element} {
+      grid-gap: $size!important;
+    }
+  }
+
+  //Column
+  @each $element, $size in $sizes {
+    .#{$screen}grid-col-gap-#{$element} {
+      grid-column-gap: $size!important;
+    }
+  }
+  //Row
+  @each $element, $size in $sizes {
+    .#{$screen}grid-row-gap-#{$element} {
+      grid-row-gap: $size!important;
+    }
+  }
+
+}
+
+
+@include grid-for-screen('');
+
+@media only screen and (max-width: 599px) {
+  @include grid-for-screen('sm-');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include grid-for-screen('md-');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include grid-for-screen('lg-');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include grid-for-screen('xlg-');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include grid-for-screen('xxlg-');
+}
+

@@ -1,0 +1,40 @@
+@mixin shadow-for-screen($screen,$state,$state_name){
+
+  /*::Shadows shadow-**/
+  @each $element, $shadow in $shadows {
+    .#{$state_name}#{$screen}shadow-#{$element}#{$state} {
+      box-shadow: $shadow!important;
+    }
+  }
+
+
+}
+
+
+
+@include shadow-for-screen('','','');
+
+@media only screen and (max-width: 599px) {
+  @include shadow-for-screen('sm-','','');
+}
+//md-css-property
+@media only screen and (min-width: 600px) and (max-width: 899px){
+  @include shadow-for-screen('md-','','');
+}
+
+//lg-css-property
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  /*tablet-landscape-only*/
+  @include shadow-for-screen('lg-','','');
+}
+//xlg-css-property
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+  /*.desktop-only */
+  @include shadow-for-screen('xlg-','','');
+}
+//xxlg-css-property
+@media only screen and (min-width: 1401px) {
+  /*.desktop-up */
+  @include shadow-for-screen('xxlg-','','');
+}
+@include shadow-for-screen('',':hover','hover\\:');
