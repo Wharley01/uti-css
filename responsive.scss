@@ -4,21 +4,21 @@
 
 
   .sm-container{
-    padding-left: 35px;
-    padding-right: 35px;
-    max-width: 1250px;
-    margin: auto;
+    padding-left: 35px!important;
+    padding-right: 35px!important;
+    max-width: 1250px!important;
+    margin: auto!important;
   }
 
 
   @each $element, $size in $sizes {
-    .sm-txt-size-#{$element} {
+    .sm-txt-s-#{$element} {
       font-size: $size!important;
     }
   }
 
   .sm-txt-center{
-    text-align: center;
+    text-align: center!important;
   }
 
 
@@ -32,9 +32,9 @@
       $alias: map_get($side_aliases,$side);
       .sm-m-#{$alias}-#{$element} {
         @if $side == "all" {
-          margin: $size;
+          margin: $size!important;
         } @else {
-          margin-#{$side}: $size;
+          margin-#{$side}: $size!important;
         }
       }
     }
@@ -48,9 +48,9 @@
       $alias: map_get($side_aliases,$side);
       .sm-p-#{$alias}-#{$element} {
         @if $side == "all" {
-          padding: $size;
+          padding: $size!important;
         } @else {
-          padding-#{$side}: $size;
+          padding-#{$side}: $size!important;
         }
       }
     }
@@ -66,8 +66,8 @@
   /*Align*/
 
   .sm-center{
-    display: flex;
-    justify-content: center;
+    display: flex!important;
+    justify-content: center!important;
   }
 
   /*::Color */
@@ -77,7 +77,7 @@
   /*::text color:: txt-c-* */
   @each $element, $color in $colors {
     .sm-txt-c-#{$element} {
-      color: $color;
+      color: $color!important;
     }
   }
 
@@ -85,7 +85,7 @@
 
   @each $element, $color in $colors {
     .sm-bg-c-#{$element} {
-      background-color: $color;
+      background-color: $color!important;
     }
   }
 
@@ -96,9 +96,9 @@
       $alias: map_get($side_aliases,$side);
       .sm-bd-w-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-width: $size;
+          border-width: $size!important;
         } @else {
-          border-#{$side}-width: $size;
+          border-#{$side}-width: $size!important;
         }
       }
     }
@@ -111,9 +111,9 @@
       $alias: map_get($side_aliases,$side);
       .sm-bd-c-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-color: $color;
+          border-color: $color!important;
         } @else {
-          border-#{$side}-color: $color;
+          border-#{$side}-color: $color!important;
         }
       }
     }
@@ -124,22 +124,34 @@
   /*Border-radius*/
 
   //ALL
-  @each $element, $size in $sizes{
-    @each $side in $sides{
-      $alias: map_get($side_aliases,$side);
-      @each $s_side in $sides{
-        $s_alias: map_get($side_aliases,$s_side);
+  @each $element,
+  $size in $sizes {
+    @each $side in $sides {
+      $alias: map_get($side_aliases, $side);
 
-        @if ($s_side != "all" and $s_side != $side) {
-          .sm-bd-round-#{$s_alias}-#{$alias}-#{$element} {
-            @if $side == "all" {
-              border-radius: $size;
-            } @else {
-              border-#{$s_side}-#{$side}-radius: $size;
-            }
-          }
+      @if $side=="all" {
+
+        .sm-bd-round-#{$alias}-#{$element} {
+          border-radius: $size!important;
         }
 
+      } @else {
+        @each $s_side in $sides {
+          $s_alias: map_get($side_aliases, $s_side);
+
+          @if ($s_side !="all"and $s_side !=$side) {
+            .sm-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+              @if $side=="all" {
+                border-radius: $size!important;
+              }
+
+              @else {
+                border-#{$s_side}-#{$side}-radius: $size!important;
+              }
+            }
+          }
+
+        }
       }
     }
   }
@@ -148,12 +160,12 @@
   /*::grid */
 
   .sm-grid{
-    display: grid;
+    display: grid!important;
   }
 
   @each $element, $template in $grids {
     .sm-grid-#{$element} {
-      grid-template-columns: $template;
+      grid-template-columns: $template!important;
     }
   }
 
@@ -161,65 +173,65 @@
   /*Grid gaps*/
   @each $element, $size in $sizes {
     .sm-grid-gap-#{$element} {
-      grid-gap: $size;
+      grid-gap: $size!important;
     }
   }
 
   //Column
   @each $element, $size in $sizes {
     .sm-grid-col-gap-#{$element} {
-      grid-column-gap: $size;
+      grid-column-gap: $size!important;
     }
   }
   //Row
   @each $element, $size in $sizes {
     .sm-grid-row-gap-#{$element} {
-      grid-row-gap: $size;
+      grid-row-gap: $size!important;
     }
   }
 
   /*::flex*/
   .sm-flex{
-    display: flex;
+    display: flex!important;
   }
 
   .sm-flex.sm-column{
-    flex-direction: column;
+    flex-direction: column!important;
   }
 
   .sm-flex.sm-row{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .sm-flex.sm-row-responsive{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .sm-flex.sm-space-between{
-    justify-content: space-between;
+    justify-content: space-between!important;
   }
 
   .sm-flex.sm-space-around{
-    justify-content: space-around;
+    justify-content: space-around!important;
   }
 
   .sm-flex.sm-end{
-    justify-content: flex-end;
+    justify-content: flex-end!important;
   }
 
   .sm-flex.sm-start{
-    justify-content: flex-start;
+    justify-content: flex-start!important;
   }
 
   .sm-flex.sm-center{
-    justify-content: center;
+    justify-content: center!important;
   }
 
   /*::Shadows shadow-**/
 
   @each $element, $shadow in $shadows {
     .sm-shadow-#{$element} {
-      box-shadow: $shadow;
+      box-shadow: $shadow!important;
     }
   }
 
@@ -230,14 +242,25 @@
   }
 
   .sm-absolute{
-    position: absolute;
+    position: absolute!important;
   }
 
   .sm-relative{
-    position: relative;
+    position: relative!important;
   }
   .sm-hide{
-    display: none;
+    display: none!important;
+  }
+  .sm-block{
+    display: block!important;
+  }
+
+  .sm-inline-block{
+    display: inline-block!important;
+  }
+
+  .sm-inline {
+    display: inline!important;
   }
 }
 //md-css-property
@@ -245,21 +268,21 @@
 
 
   .md-container{
-    padding-left: 35px;
-    padding-right: 35px;
-    max-width: 1250px;
-    margin: auto;
+    padding-left: 35px!important;
+    padding-right: 35px!important;
+    max-width: 1250px!important;
+    margin: auto!important;
   }
 
 
   @each $element, $size in $sizes {
-    .md-txt-size-#{$element} {
+    .md-txt-s-#{$element} {
       font-size: $size!important;
     }
   }
 
   .md-txt-center{
-    text-align: center;
+    text-align: center!important;
   }
   /*::margin:: margin-*-*/
 
@@ -270,9 +293,9 @@
       $alias: map_get($side_aliases,$side);
       .md-m-#{$alias}-#{$element} {
         @if $side == "all" {
-          margin: $size;
+          margin: $size!important;
         } @else {
-          margin-#{$side}: $size;
+          margin-#{$side}: $size!important;
         }
       }
     }
@@ -286,9 +309,9 @@
       $alias: map_get($side_aliases,$side);
       .md-p-#{$alias}-#{$element} {
         @if $side == "all" {
-          padding: $size;
+          padding: $size!important;
         } @else {
-          padding-#{$side}: $size;
+          padding-#{$side}: $size!important;
         }
       }
     }
@@ -304,8 +327,8 @@
   /*Align*/
 
   .md-center{
-    display: flex;
-    justify-content: center;
+    display: flex!important;
+    justify-content: center!important;
   }
 
   /*::Color */
@@ -315,7 +338,7 @@
   /*::text color:: txt-c-* */
   @each $element, $color in $colors {
     .md-txt-c-#{$element} {
-      color: $color;
+      color: $color!important;
     }
   }
 
@@ -323,7 +346,7 @@
 
   @each $element, $color in $colors {
     .md-bg-c-#{$element} {
-      background-color: $color;
+      background-color: $color!important;
     }
   }
 
@@ -334,9 +357,9 @@
       $alias: map_get($side_aliases,$side);
       .md-bd-w-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-width: $size;
+          border-width: $size!important;
         } @else {
-          border-#{$side}-width: $size;
+          border-#{$side}-width: $size!important;
         }
       }
     }
@@ -349,9 +372,9 @@
       $alias: map_get($side_aliases,$side);
       .md-bd-c-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-color: $color;
+          border-color: $color!important;
         } @else {
-          border-#{$side}-color: $color;
+          border-#{$side}-color: $color!important;
         }
       }
     }
@@ -362,22 +385,34 @@
   /*Border-radius*/
 
   //ALL
-  @each $element, $size in $sizes{
-    @each $side in $sides{
-      $alias: map_get($side_aliases,$side);
-      @each $s_side in $sides{
-        $s_alias: map_get($side_aliases,$s_side);
+  @each $element,
+  $size in $sizes {
+    @each $side in $sides {
+      $alias: map_get($side_aliases, $side);
 
-        @if ($s_side != "all" and $s_side != $side) {
-          .md-bd-round-#{$s_alias}-#{$alias}-#{$element} {
-            @if $side == "all" {
-              border-radius: $size;
-            } @else {
-              border-#{$s_side}-#{$side}-radius: $size;
-            }
-          }
+      @if $side=="all" {
+
+        .md-bd-round-#{$alias}-#{$element} {
+          border-radius: $size!important;
         }
 
+      } @else {
+        @each $s_side in $sides {
+          $s_alias: map_get($side_aliases, $s_side);
+
+          @if ($s_side !="all"and $s_side !=$side) {
+            .md-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+              @if $side=="all" {
+                border-radius: $size!important;
+              }
+
+              @else {
+                border-#{$s_side}-#{$side}-radius: $size!important;
+              }
+            }
+          }
+
+        }
       }
     }
   }
@@ -386,12 +421,12 @@
   /*::grid */
 
   .md-grid{
-    display: grid;
+    display: grid!important;
   }
 
   @each $element, $template in $grids {
     .md-grid-#{$element} {
-      grid-template-columns: $template;
+      grid-template-columns: $template!important;
     }
   }
 
@@ -399,65 +434,65 @@
   /*Grid gaps*/
   @each $element, $size in $sizes {
     .md-grid-gap-#{$element} {
-      grid-gap: $size;
+      grid-gap: $size!important;
     }
   }
 
   //Column
   @each $element, $size in $sizes {
     .md-grid-col-gap-#{$element} {
-      grid-column-gap: $size;
+      grid-column-gap: $size!important;
     }
   }
   //Row
   @each $element, $size in $sizes {
     .md-grid-row-gap-#{$element} {
-      grid-row-gap: $size;
+      grid-row-gap: $size!important;
     }
   }
 
   /*::flex*/
   .md-flex{
-    display: flex;
+    display: flex!important;
   }
 
   .md-flex.md-column{
-    flex-direction: column;
+    flex-direction: column!important;
   }
 
   .md-flex.md-row{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .md-flex.md-row-responsive{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .md-flex.md-space-between{
-    justify-content: space-between;
+    justify-content: space-between!important;
   }
 
   .md-flex.md-space-around{
-    justify-content: space-around;
+    justify-content: space-around!important;
   }
 
   .md-flex.md-end{
-    justify-content: flex-end;
+    justify-content: flex-end!important;
   }
 
   .md-flex.md-start{
-    justify-content: flex-start;
+    justify-content: flex-start!important;
   }
 
   .md-flex.md-center{
-    justify-content: center;
+    justify-content: center!important;
   }
 
   /*::Shadows shadow-**/
 
   @each $element, $shadow in $shadows {
     .md-shadow-#{$element} {
-      box-shadow: $shadow;
+      box-shadow: $shadow!important;
     }
   }
 
@@ -468,15 +503,27 @@
   }
 
   .md-absolute{
-    position: absolute;
+    position: absolute!important;
   }
 
   .md-relative{
-    position: relative;
+    position: relative!important;
   }
 
   .md-hide{
-    display: none;
+    display: none!important;
+  }
+
+  .md-block{
+    display: block!important;
+  }
+
+  .md-inline-block{
+    display: inline-block!important;
+  }
+
+  .md-inline {
+    display: inline!important;
   }
 }
 //lg-css-property
@@ -485,21 +532,21 @@
 
 
   .lg-container{
-    padding-left: 35px;
-    padding-right: 35px;
-    max-width: 1250px;
-    margin: auto;
+    padding-left: 35px!important;
+    padding-right: 35px!important;
+    max-width: 1250px!important;
+    margin: auto!important;
   }
 
 
   @each $element, $size in $sizes {
-    .lg-txt-size-#{$element} {
+    .lg-txt-s-#{$element} {
       font-size: $size!important;
     }
   }
 
   .lg-txt-center{
-    text-align: center;
+    text-align: center!important;
   }
 
 
@@ -513,9 +560,9 @@
       $alias: map_get($side_aliases,$side);
       .lg-m-#{$alias}-#{$element} {
         @if $side == "all" {
-          margin: $size;
+          margin: $size!important;
         } @else {
-          margin-#{$side}: $size;
+          margin-#{$side}: $size!important;
         }
       }
     }
@@ -529,9 +576,9 @@
       $alias: map_get($side_aliases,$side);
       .lg-p-#{$alias}-#{$element} {
         @if $side == "all" {
-          padding: $size;
+          padding: $size!important;
         } @else {
-          padding-#{$side}: $size;
+          padding-#{$side}: $size!important;
         }
       }
     }
@@ -547,8 +594,8 @@
   /*Align*/
 
   .lg-center{
-    display: flex;
-    justify-content: center;
+    display: flex!important;
+    justify-content: center!important;
   }
 
   /*::Color */
@@ -558,7 +605,7 @@
   /*::text color:: txt-c-* */
   @each $element, $color in $colors {
     .lg-txt-c-#{$element} {
-      color: $color;
+      color: $color!important;
     }
   }
 
@@ -566,7 +613,7 @@
 
   @each $element, $color in $colors {
     .lg-bg-c-#{$element} {
-      background-color: $color;
+      background-color: $color!important;
     }
   }
 
@@ -577,9 +624,9 @@
       $alias: map_get($side_aliases,$side);
       .lg-bd-w-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-width: $size;
+          border-width: $size!important;
         } @else {
-          border-#{$side}-width: $size;
+          border-#{$side}-width: $size!important;
         }
       }
     }
@@ -592,9 +639,9 @@
       $alias: map_get($side_aliases,$side);
       .lg-bd-c-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-color: $color;
+          border-color: $color!important;
         } @else {
-          border-#{$side}-color: $color;
+          border-#{$side}-color: $color!important;
         }
       }
     }
@@ -605,22 +652,36 @@
   /*Border-radius*/
 
   //ALL
-  @each $element, $size in $sizes{
-    @each $side in $sides{
-      $alias: map_get($side_aliases,$side);
-      @each $s_side in $sides{
-        $s_alias: map_get($side_aliases,$s_side);
+  @each $element,
+  $size in $sizes {
+    @each $side in $sides {
+      $alias: map_get($side_aliases, $side);
 
-        @if ($s_side != "all" and $s_side != $side) {
-          .lg-bd-round-#{$s_alias}-#{$alias}-#{$element} {
-            @if $side == "all" {
-              border-radius: $size;
-            } @else {
-              border-#{$s_side}-#{$side}-radius: $size;
-            }
-          }
+      @if $side=="all" {
+
+        .lg-bd-round-#{$alias}-#{$element} {
+          border-radius: $size!important;
         }
 
+      }
+
+      @else {
+        @each $s_side in $sides {
+          $s_alias: map_get($side_aliases, $s_side);
+
+          @if ($s_side !="all"and $s_side !=$side) {
+            .lg-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+              @if $side=="all" {
+                border-radius: $size!important;
+              }
+
+              @else {
+                border-#{$s_side}-#{$side}-radius: $size!important;
+              }
+            }
+          }
+
+        }
       }
     }
   }
@@ -629,12 +690,12 @@
   /*::grid */
 
   .lg-grid{
-    display: grid;
+    display: grid!important;
   }
 
   @each $element, $template in $grids {
     .lg-grid-#{$element} {
-      grid-template-columns: $template;
+      grid-template-columns: $template!important;
     }
   }
 
@@ -642,65 +703,65 @@
   /*Grid gaps*/
   @each $element, $size in $sizes {
     .lg-grid-gap-#{$element} {
-      grid-gap: $size;
+      grid-gap: $size!important;
     }
   }
 
   //Column
   @each $element, $size in $sizes {
     .lg-grid-col-gap-#{$element} {
-      grid-column-gap: $size;
+      grid-column-gap: $size!important;
     }
   }
   //Row
   @each $element, $size in $sizes {
     .lg-grid-row-gap-#{$element} {
-      grid-row-gap: $size;
+      grid-row-gap: $size!important;
     }
   }
 
   /*::flex*/
   .lg-flex{
-    display: flex;
+    display: flex!important;
   }
 
   .lg-flex.lg-column{
-    flex-direction: column;
+    flex-direction: column!important;
   }
 
   .lg-flex.lg-row{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .lg-flex.lg-row-responsive{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .lg-flex.lg-space-between{
-    justify-content: space-between;
+    justify-content: space-between!important;
   }
 
   .lg-flex.lg-space-around{
-    justify-content: space-around;
+    justify-content: space-around!important;
   }
 
   .lg-flex.lg-end{
-    justify-content: flex-end;
+    justify-content: flex-end!important;
   }
 
   .lg-flex.lg-start{
-    justify-content: flex-start;
+    justify-content: flex-start!important;
   }
 
   .lg-flex.lg-center{
-    justify-content: center;
+    justify-content: center!important;
   }
 
   /*::Shadows shadow-**/
 
   @each $element, $shadow in $shadows {
     .lg-shadow-#{$element} {
-      box-shadow: $shadow;
+      box-shadow: $shadow!important;
     }
   }
 
@@ -711,15 +772,27 @@
   }
 
   .lg-absolute{
-    position: absolute;
+    position: absolute!important;
   }
 
   .lg-relative{
-    position: relative;
+    position: relative!important;
   }
 
   .lg-hide{
-    display: none;
+    display: none!important;
+  }
+
+  .lg-block{
+    display: block!important;
+  }
+
+  .lg-inline-block{
+    display: inline-block!important;
+  }
+
+  .lg-inline {
+    display: inline!important;
   }
 }
 //xlg-css-property
@@ -728,21 +801,21 @@
 
 
   .xlg-container{
-    padding-left: 35px;
-    padding-right: 35px;
-    max-width: 1250px;
-    margin: auto;
+    padding-left: 35px!important;
+    padding-right: 35px!important;
+    max-width: 1250px!important;
+    margin: auto!important;
   }
 
 
   @each $element, $size in $sizes {
-    .xlg-txt-size-#{$element} {
+    .xlg-txt-s-#{$element} {
       font-size: $size!important;
     }
   }
 
   .xlg-txt-center{
-    text-align: center;
+    text-align: center!important;
   }
 
 
@@ -756,9 +829,9 @@
       $alias: map_get($side_aliases,$side);
       .xlg-m-#{$alias}-#{$element} {
         @if $side == "all" {
-          margin: $size;
+          margin: $size!important;
         } @else {
-          margin-#{$side}: $size;
+          margin-#{$side}: $size!important;
         }
       }
     }
@@ -772,9 +845,9 @@
       $alias: map_get($side_aliases,$side);
       .xlg-p-#{$alias}-#{$element} {
         @if $side == "all" {
-          padding: $size;
+          padding: $size!important;
         } @else {
-          padding-#{$side}: $size;
+          padding-#{$side}: $size!important;
         }
       }
     }
@@ -790,8 +863,8 @@
   /*Align*/
 
   .xlg-center{
-    display: flex;
-    justify-content: center;
+    display: flex!important;
+    justify-content: center!important;
   }
 
   /*::Color */
@@ -801,7 +874,7 @@
   /*::text color:: txt-c-* */
   @each $element, $color in $colors {
     .xlg-txt-c-#{$element} {
-      color: $color;
+      color: $color!important;
     }
   }
 
@@ -809,7 +882,7 @@
 
   @each $element, $color in $colors {
     .xlg-bg-c-#{$element} {
-      background-color: $color;
+      background-color: $color!important;
     }
   }
 
@@ -820,9 +893,9 @@
       $alias: map_get($side_aliases,$side);
       .xlg-bd-w-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-width: $size;
+          border-width: $size!important;
         } @else {
-          border-#{$side}-width: $size;
+          border-#{$side}-width: $size!important;
         }
       }
     }
@@ -835,9 +908,9 @@
       $alias: map_get($side_aliases,$side);
       .xlg-bd-c-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-color: $color;
+          border-color: $color!important;
         } @else {
-          border-#{$side}-color: $color;
+          border-#{$side}-color: $color!important;
         }
       }
     }
@@ -848,22 +921,36 @@
   /*Border-radius*/
 
   //ALL
-  @each $element, $size in $sizes{
-    @each $side in $sides{
-      $alias: map_get($side_aliases,$side);
-      @each $s_side in $sides{
-        $s_alias: map_get($side_aliases,$s_side);
+  @each $element,
+  $size in $sizes {
+    @each $side in $sides {
+      $alias: map_get($side_aliases, $side);
 
-        @if ($s_side != "all" and $s_side != $side) {
-          .xlg-bd-round-#{$s_alias}-#{$alias}-#{$element} {
-            @if $side == "all" {
-              border-radius: $size;
-            } @else {
-              border-#{$s_side}-#{$side}-radius: $size;
-            }
-          }
+      @if $side=="all" {
+
+        .xlg-bd-round-#{$alias}-#{$element} {
+          border-radius: $size!important;
         }
 
+      }
+
+      @else {
+        @each $s_side in $sides {
+          $s_alias: map_get($side_aliases, $s_side);
+
+          @if ($s_side !="all"and $s_side !=$side) {
+            .xlg-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+              @if $side=="all" {
+                border-radius: $size!important;
+              }
+
+              @else {
+                border-#{$s_side}-#{$side}-radius: $size!important;
+              }
+            }
+          }
+
+        }
       }
     }
   }
@@ -872,12 +959,12 @@
   /*::grid */
 
   .xlg-grid{
-    display: grid;
+    display: grid!important;
   }
 
   @each $element, $template in $grids {
     .xlg-grid-#{$element} {
-      grid-template-columns: $template;
+      grid-template-columns: $template!important;
     }
   }
 
@@ -885,65 +972,65 @@
   /*Grid gaps*/
   @each $element, $size in $sizes {
     .xlg-grid-gap-#{$element} {
-      grid-gap: $size;
+      grid-gap: $size!important;
     }
   }
 
   //Column
   @each $element, $size in $sizes {
     .xlg-grid-col-gap-#{$element} {
-      grid-column-gap: $size;
+      grid-column-gap: $size!important;
     }
   }
   //Row
   @each $element, $size in $sizes {
     .xlg-grid-row-gap-#{$element} {
-      grid-row-gap: $size;
+      grid-row-gap: $size!important;
     }
   }
 
   /*::flex*/
   .xlg-flex{
-    display: flex;
+    display: flex!important;
   }
 
   .xlg-flex.xlg-column{
-    flex-direction: column;
+    flex-direction: column!important;
   }
 
   .xlg-flex.xlg-row{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .xlg-flex.xlg-row-responsive{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .xlg-flex.xlg-space-between{
-    justify-content: space-between;
+    justify-content: space-between!important;
   }
 
   .xlg-flex.xlg-space-around{
-    justify-content: space-around;
+    justify-content: space-around!important;
   }
 
   .xlg-flex.xlg-end{
-    justify-content: flex-end;
+    justify-content: flex-end!important;
   }
 
   .xlg-flex.xlg-start{
-    justify-content: flex-start;
+    justify-content: flex-start!important;
   }
 
   .xlg-flex.xlg-center{
-    justify-content: center;
+    justify-content: center!important;
   }
 
   /*::Shadows shadow-**/
 
   @each $element, $shadow in $shadows {
     .xlg-shadow-#{$element} {
-      box-shadow: $shadow;
+      box-shadow: $shadow!important;
     }
   }
 
@@ -954,15 +1041,27 @@
   }
 
   .xlg-absolute{
-    position: absolute;
+    position: absolute!important;
   }
 
   .xlg-relative{
-    position: relative;
+    position: relative!important;
   }
 
   .xlg-hide{
-    display: none;
+    display: none!important;
+  }
+
+  .xlg-block{
+    display: block!important;
+  }
+
+  .xlg-inline-block{
+    display: inline-block!important;
+  }
+
+  .xlg-inline {
+    display: inline!important;
   }
 
 }
@@ -972,21 +1071,21 @@
 
 
   .xxlg-container{
-    padding-left: 35px;
-    padding-right: 35px;
-    max-width: 1250px;
-    margin: auto;
+    padding-left: 35px!important;
+    padding-right: 35px!important;
+    max-width: 1250px!important;
+    margin: auto!important;
   }
 
 
   @each $element, $size in $sizes {
-    .xxlg-txt-size-#{$element} {
+    .xxlg-txt-s-#{$element} {
       font-size: $size!important;
     }
   }
 
   .xxlg-txt-center{
-    text-align: center;
+    text-align: center!important;
   }
 
 
@@ -1000,9 +1099,9 @@
       $alias: map_get($side_aliases,$side);
       .xxlg-m-#{$alias}-#{$element} {
         @if $side == "all" {
-          margin: $size;
+          margin: $size!important;
         } @else {
-          margin-#{$side}: $size;
+          margin-#{$side}: $size!important;
         }
       }
     }
@@ -1016,9 +1115,9 @@
       $alias: map_get($side_aliases,$side);
       .xxlg-p-#{$alias}-#{$element} {
         @if $side == "all" {
-          padding: $size;
+          padding: $size!important;
         } @else {
-          padding-#{$side}: $size;
+          padding-#{$side}: $size!important;
         }
       }
     }
@@ -1034,8 +1133,8 @@
   /*Align*/
 
   .xxlg-center{
-    display: flex;
-    justify-content: center;
+    display: flex!important;
+    justify-content: center!important;
   }
 
   /*::Color */
@@ -1045,7 +1144,7 @@
   /*::text color:: txt-c-* */
   @each $element, $color in $colors {
     .xxlg-txt-c-#{$element} {
-      color: $color;
+      color: $color!important;
     }
   }
 
@@ -1053,7 +1152,7 @@
 
   @each $element, $color in $colors {
     .xxlg-bg-c-#{$element} {
-      background-color: $color;
+      background-color: $color!important;
     }
   }
 
@@ -1064,9 +1163,9 @@
       $alias: map_get($side_aliases,$side);
       .xxlg-bd-w-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-width: $size;
+          border-width: $size!important;
         } @else {
-          border-#{$side}-width: $size;
+          border-#{$side}-width: $size!important;
         }
       }
     }
@@ -1079,9 +1178,9 @@
       $alias: map_get($side_aliases,$side);
       .xxlg-bd-c-#{$alias}-#{$element} {
         @if $side == "all" {
-          border-color: $color;
+          border-color: $color!important;
         } @else {
-          border-#{$side}-color: $color;
+          border-#{$side}-color: $color!important;
         }
       }
     }
@@ -1092,22 +1191,36 @@
   /*Border-radius*/
 
   //ALL
-  @each $element, $size in $sizes{
-    @each $side in $sides{
-      $alias: map_get($side_aliases,$side);
-      @each $s_side in $sides{
-        $s_alias: map_get($side_aliases,$s_side);
+  @each $element,
+  $size in $sizes {
+    @each $side in $sides {
+      $alias: map_get($side_aliases, $side);
 
-        @if ($s_side != "all" and $s_side != $side) {
-          .xxlg-bd-round-#{$s_alias}-#{$alias}-#{$element} {
-            @if $side == "all" {
-              border-radius: $size;
-            } @else {
-              border-#{$s_side}-#{$side}-radius: $size;
-            }
-          }
+      @if $side=="all" {
+
+        .xxlg-bd-round-#{$alias}-#{$element} {
+          border-radius: $size!important;
         }
 
+      }
+
+      @else {
+        @each $s_side in $sides {
+          $s_alias: map_get($side_aliases, $s_side);
+
+          @if ($s_side !="all"and $s_side !=$side) {
+            .xxlg-bd-round-#{$s_alias}-#{$alias}-#{$element} {
+              @if $side=="all" {
+                border-radius: $size!important;
+              }
+
+              @else {
+                border-#{$s_side}-#{$side}-radius: $size!important;
+              }
+            }
+          }
+
+        }
       }
     }
   }
@@ -1116,12 +1229,12 @@
   /*::grid */
 
   .xxlg-grid{
-    display: grid;
+    display: grid!important;
   }
 
   @each $element, $template in $grids {
     .xxlg-grid-#{$element} {
-      grid-template-columns: $template;
+      grid-template-columns: $template!important;
     }
   }
 
@@ -1129,65 +1242,65 @@
   /*Grid gaps*/
   @each $element, $size in $sizes {
     .xxlg-grid-gap-#{$element} {
-      grid-gap: $size;
+      grid-gap: $size!important;
     }
   }
 
   //Column
   @each $element, $size in $sizes {
     .xxlg-grid-col-gap-#{$element} {
-      grid-column-gap: $size;
+      grid-column-gap: $size!important;
     }
   }
   //Row
   @each $element, $size in $sizes {
     .xxlg-grid-row-gap-#{$element} {
-      grid-row-gap: $size;
+      grid-row-gap: $size!important;
     }
   }
 
   /*::flex*/
   .xxlg-flex{
-    display: flex;
+    display: flex!important;
   }
 
   .xxlg-flex.xxlg-column{
-    flex-direction: column;
+    flex-direction: column!important;
   }
 
   .xxlg-flex.xxlg-row{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .xxlg-flex.xxlg-row-responsive{
-    flex-direction: row;
+    flex-direction: row!important;
   }
 
   .xxlg-flex.xxlg-space-between{
-    justify-content: space-between;
+    justify-content: space-between!important;
   }
 
   .xxlg-flex.xxlg-space-around{
-    justify-content: space-around;
+    justify-content: space-around!important;
   }
 
   .xxlg-flex.xxlg-end{
-    justify-content: flex-end;
+    justify-content: flex-end!important;
   }
 
   .xxlg-flex.xxlg-start{
-    justify-content: flex-start;
+    justify-content: flex-start!important;
   }
 
   .xxlg-flex.xxlg-center{
-    justify-content: center;
+    justify-content: center!important;
   }
 
   /*::Shadows shadow-**/
 
   @each $element, $shadow in $shadows {
     .xxlg-shadow-#{$element} {
-      box-shadow: $shadow;
+      box-shadow: $shadow!important;
     }
   }
 
@@ -1198,14 +1311,26 @@
   }
 
   .xxlg-absolute{
-    position: absolute;
+    position: absolute!important;
   }
 
   .xxlg-relative{
-    position: relative;
+    position: relative!important;
   }
 
   .xxlg-hide{
-    display: none;
+    display: none!important;
+  }
+
+  .xxlg-block{
+    display: block!important;
+  }
+
+  .xxlg-inline-block{
+    display: inline-block!important;
+  }
+
+  .xxlg-inline {
+    display: inline!important;
   }
 }

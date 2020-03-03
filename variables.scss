@@ -23,55 +23,27 @@ $colors:(
 
 );
 
+@function toRem($size){
+  $rem_size: $size / 16px;
+  @return #{$rem_size}rem;
+}
+
 $unit_size: 8px;
 /*Sizing*/
 $sizes:(
-        xxxsm: $unit_size,
-        xxsm: $unit_size * 2,
-        xsm: $unit_size * 3,
-        sm: $unit_size * 4,
-        md: $unit_size * 5,
-        lg: $unit_size * 6,
-        xlg: $unit_size * 7,
-        xxlg: $unit_size * 8,
-        xxxlg: $unit_size * 9,
+        xxxsm: toRem($unit_size * 2),
+        xxsm: toRem($unit_size * 3),
+        xsm: toRem($unit_size * 4),
+        sm: toRem($unit_size * 5),
+        md: toRem($unit_size * 6),
+        lg: toRem($unit_size * 7),
+        xlg: toRem($unit_size * 8),
+        xxlg: toRem($unit_size * 9),
+        xxxlg: toRem($unit_size * 10),
         none: 0,
         auto: auto
 );
 
-$phone_only_unit_size: 6px;
-/*Sizing*/
-$phone_only_sizes:(
-        xxxsm: $unit_size,
-        xxsm: $unit_size * 1,
-        xsm: $unit_size * 2,
-        sm: $unit_size * 3,
-        md: $unit_size * 4,
-        lg: $unit_size * 5,
-        xlg: $unit_size * 5,
-        xxlg: $unit_size * 5,
-        xxxlg: $unit_size * 5,
-        none: 0,
-        auto: auto
-);
-
-
-
-$tablets_portrait_only_unit_size: 8px;
-/*Sizing*/
-$tablets_portrait_only_sizes:(
-        xxxsm: $unit_size,
-        xxsm: $unit_size * 2,
-        xsm: $unit_size * 3,
-        sm: $unit_size * 4,
-        md: $unit_size * 5,
-        lg: $unit_size * 6,
-        xlg: $unit_size * 7,
-        xxlg: $unit_size * 8,
-        xxxlg: $unit_size * 9,
-        none: 0,
-        auto: auto
-);
 
 $shadows:(
         normal: 13px 11px 59px rgba(0, 0, 0, 0.15),
@@ -84,7 +56,8 @@ $grids:(
         1x1: 1fr 1fr,
         1x1x1: 1fr 1fr 1fr,
         1x1x1x1: 1fr 1fr 1fr 1fr,
-        1x2:1fr 2fr,
+        1x1x1x1x1: 1fr 1fr 1fr 1fr 1fr,
+        1x1x1x1x2:1fr 1fr 1fr 1fr 2fr,
         2x1:2fr 1fr,
         3x1:3fr 1fr,
         1x1x2:1fr 2fr,
@@ -93,57 +66,6 @@ $grids:(
         auto: repeat(auto-fill, minmax(250px,1fr))
 );
 
-$phone_only_grids:(
-        1x1: 1fr!important,
-        1x1x1: 1fr!important,
-        1x1x1x1: 1fr!important,
-        1x2:1fr!important,
-        2x1:2fr!important,
-        3x1:1fr!important,
-        1x1x2:1fr!important,
-        2x1x1:1fr!important,
-        1x3:1fr!important,
-        auto: repeat(auto-fill, minmax(250px,1fr))
-);
-
-$tablets_portrait_only_grids:(
-        1x1: 1fr 1fr,
-        1x1x1: 1fr 1fr,
-        1x1x1x1: 1fr 1fr,
-        1x2:1fr 2fr,
-        2x1:2fr 1fr,
-        3x1:3fr 1fr,
-        1x1x2:1fr 2fr,
-        2x1x1:1fr 2fr,
-        1x3:1fr 3fr,
-        auto: repeat(auto-fill, minmax(250px,1fr))
-);
-
-$tablets_landscape_only_grids:(
-        1x1: 1fr 1fr,
-        1x1x1: 1fr 1fr 1fr,
-        1x1x1x1: 1fr 1fr 1fr,
-        1x2:1fr 2fr,
-        2x1:2fr 1fr,
-        3x1:3fr 1fr,
-        1x1x2:1fr 2fr,
-        2x1x1:1fr 2fr,
-        1x3:1fr 3fr,
-        auto: repeat(auto-fill, minmax(250px,1fr))
-);
-
-$desktop_up_grid:(
-        1x1: 1fr 1fr,
-        1x1x1: 1fr 1fr 1fr,
-        1x1x1x1: 1fr 1fr 1fr 1fr,
-        1x2:1fr 2fr,
-        2x1:2fr 1fr,
-        3x1:3fr 1fr,
-        1x1x2:1fr 2fr,
-        2x1x1:1fr 2fr,
-        1x3:1fr 3fr,
-        auto: repeat(auto-fill, minmax(250px,1fr))
-);
 $side_aliases:(
         top:t,
         bottom:b,

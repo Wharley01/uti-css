@@ -15,7 +15,7 @@ a{
 }
 
 body{
-  font-family: 'Josefin Sans', sans-serif!important;
+  font-family: 'Poppins', sans-serif!important;
   margin: 0;
   padding: 0;
 }
@@ -41,7 +41,7 @@ button{
 
 
 @each $element, $size in $sizes {
-  .txt-size-#{$element} {
+  .txt-s-#{$element} {
     font-size: $size!important;
   }
 }
@@ -156,19 +156,27 @@ button{
 @each $element, $size in $sizes{
   @each $side in $sides{
     $alias: map_get($side_aliases,$side);
-    @each $s_side in $sides{
-      $s_alias: map_get($side_aliases,$s_side);
+    @if $side == "all" {
 
-      @if ($s_side != "all" and $s_side != $side) {
-        .bd-round-#{$s_alias}-#{$alias}-#{$element} {
-          @if $side == "all" {
-            border-radius: $size;
-          } @else {
-            border-#{$s_side}-#{$side}-radius: $size;
+    .bd-round-#{$alias}-#{$element} {
+        border-radius: $size;
+    }
+
+    }@else {
+      @each $s_side in $sides{
+        $s_alias: map_get($side_aliases,$s_side);
+
+        @if ($s_side != "all" and $s_side != $side) {
+          .bd-round-#{$s_alias}-#{$alias}-#{$element} {
+            @if $side == "all" {
+              border-radius: $size;
+            } @else {
+              border-#{$s_side}-#{$side}-radius: $size;
+            }
           }
         }
-      }
 
+      }
     }
   }
 }
